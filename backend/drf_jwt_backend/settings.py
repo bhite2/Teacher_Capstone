@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'comments',
     'friendslist',
     'replies',
-    'resources'
+    'resources',
+    'gradelevels'
 ]
 
 MIDDLEWARE = [

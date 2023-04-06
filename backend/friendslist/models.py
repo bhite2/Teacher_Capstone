@@ -3,6 +3,6 @@ from authentication.models import User
 
 # Create your models here.
 
-class Friends_List(models.Model):
+class FriendsList(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
    
