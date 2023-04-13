@@ -10,5 +10,5 @@ class Resource(models.Model):
     description = models.TextField()
     subject = models.CharField(max_length=255)
     grade_level = models.ManyToManyField(GradeLevel)
-    file = models.FileField(upload_to=None, max_length=255)
+    file = models.FileField(upload_to='uploads/', max_length=255)
     

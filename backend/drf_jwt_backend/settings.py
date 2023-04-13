@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 from datetime import timedelta
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -60,6 +61,12 @@ MIDDLEWARE = [
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True
+
+# Actual directory user files go to
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'sourcefiles')
+
+# URL used to access the media
+MEDIA_URL = '/source/'
 
 ROOT_URLCONF = 'drf_jwt_backend.urls'
 
