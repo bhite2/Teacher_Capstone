@@ -17,4 +17,5 @@ class User(AbstractUser):
     # user_grade = models.CharField(max_length=255)
     # user_district = models.CharField(max_length=255)
     # user_state = models.CharField(max_length=255)
+    # friends = models.ManytoMany("User", blank=True)
 
