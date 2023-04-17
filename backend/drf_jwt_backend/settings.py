@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'friendslist',
     'replies',
     'resources',
-    'gradelevels'
+    'gradelevels',
+    'friend_request'
 ]
 
 MIDDLEWARE = [
