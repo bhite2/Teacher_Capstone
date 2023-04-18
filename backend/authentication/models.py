@@ -3,7 +3,7 @@ from django.contrib.auth.models import AbstractUser
 
 
 class User(AbstractUser):
-    pass
+    
     '''
     This is a custom version of the built in User class
     It contains all of the built in fields and functionality of the standard User
@@ -14,8 +14,8 @@ class User(AbstractUser):
     # Example (note import of models above that is commented out)
     # this will add a column to the user table
     # is_student = models.BooleanField('student status', default=False)
-    # user_grade = models.CharField(max_length=255)
-    # user_district = models.CharField(max_length=255)
-    # user_state = models.CharField(max_length=255)
-    # friends = models.ManytoMany("User", blank=True)
-
+    user_grade = models.CharField(max_length=255,null=True)
+    user_district = models.CharField(max_length=255,null=True)
+    user_state = models.CharField(max_length=255,null=True)
+    
+    

@@ -19,11 +19,21 @@ def get_all_resources(request):
         resources = Resource.objects.all()
         serializer = ResourceSerializer(resources, many=True)
         return Response(serializer.data)
-    elif request.method == 'POST':
+    # elif request.method == 'POST':
+    #     serializer = ResourceSerializer(data=request.data)
+    #     serializer.is_valid(raise_exception=True)
+    #     serializer.save()
+    #     return Response(serializer.data, status=status.HTTP_201_CREATED)
+    
+@api_view(["POST"])
+@permission_classes([IsAuthenticated])
+def post_new_resource(request):
+    if request.method == 'POST':
         serializer = ResourceSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
+        if serializer.is_valid():
+            serializer.save(user=request.user)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
 @api_view(['GET', 'POST', 'PUT', 'DELETE'])
 @permission_classes([IsAuthenticated])
