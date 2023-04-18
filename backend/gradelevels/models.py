@@ -4,3 +4,6 @@ from django.db import models
 
 class GradeLevel(models.Model):
     level = models.CharField(max_length=10)
+    
+    def __str__(self) -> str:
+        return f"{self.level}"

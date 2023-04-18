@@ -26,7 +26,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-AUTH_USER_MODEL = 'authentication.User'
+AUTH_USER_MODEL = 'authentication.User', 'friendslist.AddFriend',
 
 
 # Application definition
@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'replies',
     'resources',
     'gradelevels',
-    'friend_request'
+    'ratings'
 ]
 
 MIDDLEWARE = [

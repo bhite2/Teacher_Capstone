@@ -1,9 +1,9 @@
 from rest_framework import serializers
-from .models import FriendsList
+from .models import AddFriend
 
 
-class FriendsListSerializer(serializers.ModelSerializer):
+class AddFriendSerializer(serializers.ModelSerializer):
     class Meta:
-        model = FriendsList
-        fields = ['id','user_id']
+        model = AddFriend
+        fields = ['id','user', 'user_friend']
         depth = 1

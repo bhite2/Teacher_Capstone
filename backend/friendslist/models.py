@@ -3,6 +3,7 @@ from authentication.models import User
 
 # Create your models here.
 
-class FriendsList(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-   
+class AddFriend(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user')
+    friend = models.ManyToManyField(User, related_name='friend')
+    
