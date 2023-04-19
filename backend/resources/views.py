@@ -35,7 +35,7 @@ def post_new_resource(request):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
-@api_view(['GET', 'POST', 'PUT', 'DELETE'])
+@api_view(['GET', 'PUT', 'DELETE'])
 @permission_classes([IsAuthenticated])
 def user_resources(request):
     resource = get_object_or_404(Resource)
@@ -43,12 +43,6 @@ def user_resources(request):
         resources = Resource.objects.filter(user_id=request.user.id)
         serializer = ResourceSerializer(resources, many=True)
         return Response(serializer.data)
-    elif request.method == 'POST':
-        serializer = ResourceSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save(user=request.user)
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     elif request.method == 'PUT':
         serializer = ResourceSerializer(super, data=request.data)
         serializer.is_valid(raise_exception=True)
