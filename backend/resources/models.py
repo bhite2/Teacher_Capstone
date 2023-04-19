@@ -1,5 +1,4 @@
 from django.db import models
-from django.core.validators import FileExtensionValidator
 from gradelevels.models import GradeLevel
 from authentication.models import User
 

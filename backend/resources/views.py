@@ -19,11 +19,6 @@ def get_all_resources(request):
         resources = Resource.objects.all()
         serializer = ResourceSerializer(resources, many=True)
         return Response(serializer.data)
-    # elif request.method == 'POST':
-    #     serializer = ResourceSerializer(data=request.data)
-    #     serializer.is_valid(raise_exception=True)
-    #     serializer.save()
-    #     return Response(serializer.data, status=status.HTTP_201_CREATED)
     
 @api_view(["POST"])
 @permission_classes([IsAuthenticated])
@@ -44,7 +39,7 @@ def user_resources(request):
         serializer = ResourceSerializer(resources, many=True)
         return Response(serializer.data)
     elif request.method == 'PUT':
-        serializer = ResourceSerializer(super, data=request.data)
+        serializer = ResourceSerializer(resource, data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data)
