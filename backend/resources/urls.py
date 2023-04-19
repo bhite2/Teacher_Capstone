@@ -5,7 +5,7 @@ from resources import views
 
 urlpatterns = [
    
-    path('user/', views.user_resources),
+    path('', views.user_resources),
     path('all/', views.get_all_resources),
     path('post/', views.post_new_resource),
 ]
