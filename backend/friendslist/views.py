@@ -30,14 +30,15 @@ def add_friend(request, user_pk, friend_pk):
     except:
         return Response ({"User not found!"}, status=status.HTTP_404_NOT_FOUND)
     
-    user.friend.add(friend)
-    user.save()
-    serializer = AddFriendSerializer(user)
+    add_friend = AddFriend.objects.create(user=user)
+    add_friend.friend.add(friend)
+    
+    serializer = AddFriendSerializer(add_friend)
     return Response(serializer.data, status=status.HTTP_200_OK)
     
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def users_friends(request):
-    friends = AddFriend.objects.filter(addfriend_id=request.addfriend.user_id)
+    friends = AddFriend.objects.filter(user_id=request.user.id)
     serializer = AddFriendSerializer(friends, many=True)
     return Response(serializer.data)

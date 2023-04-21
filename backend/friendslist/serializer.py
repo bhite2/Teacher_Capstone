@@ -5,5 +5,5 @@ from .models import AddFriend
 class AddFriendSerializer(serializers.ModelSerializer):
     class Meta:
         model = AddFriend
-        fields = ['id','user', 'user_friend']
+        fields = ['id','user', 'friend']
         depth = 1

@@ -9,7 +9,7 @@ const CreateResource = (props) => {
     const[grade_level, setGradeLevel] = useState('')
     const[file, setSet] = useState('')
 
-    async function CreateResource(newSong) {
+    async function CreateResource(newResource) {
         const response = await axios.post('http://127.0.0.1:8000/api/resources/', newResource);
         if(response.status === 201){
             await props.getAllResources()
@@ -26,7 +26,7 @@ const CreateResource = (props) => {
             file: file
         };
         console.log(newEntry);
-        createResource(newEntry)
+        CreateResource(newEntry)
         }
 
     return ( 
@@ -39,22 +39,22 @@ const CreateResource = (props) => {
         </div>
         <div className='form-group'>
             <label>Description:</label>
-            <input type='text' className='form-control' value={artist} onChange={(event) => setDescription(event.target.value)}/>
+            <input type='text' className='form-control' value={description} onChange={(event) => setDescription(event.target.value)}/>
 
         </div>
         <div className='form-group'>
             <label>Subject:</label>
-            <input type='text' className='form-control' value={album} onChange={(event) => setSubject(event.target.value)}/>
+            <input type='text' className='form-control' value={subject} onChange={(event) => setSubject(event.target.value)}/>
 
         </div>
         <div className='form-group'>
             <label>Grade Level:</label>
-            <input type='text' className='form-control' value={genre} onChange={(event) => setGenre(event.target.value)}/>
+            <input type='text' className='form-control' value={grade_level} onChange={(event) => setGradeLevel(event.target.value)}/>
 
         </div>
         <div className='form-group'>
             <label>File:</label>
-            <input type='date' className='form-control' value={release_date} onChange={(event) => setReleaseDate(event.target.value)}/>
+            <input type='file' className='form-control' value={file} onChange={(event) => setFile(event.target.value)}/>
 
         </div>
         <button type='submit' className='btn btn-primary' style={{'margin-top': '1em'}}>Create</button>
