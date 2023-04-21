@@ -23,6 +23,6 @@ urlpatterns = [
     path('api/auth/', include('authentication.urls')),
     path('api/cars/', include('cars.urls')),
     path('api/resources/', include('resources.urls')),
-    # path('api/friendslist/', include()),
+    path('api/friendslist/', include('friendslist.urls')),
     # path('api/comments/', include()),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

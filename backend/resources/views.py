@@ -12,7 +12,7 @@ from django.shortcuts import get_object_or_404
 
 parser_classes = (MultiPartParser, FormParser)
 
-@api_view(['GET', 'POST'])
+@api_view(['GET'])
 @permission_classes([AllowAny])
 def get_all_resources(request):
     if request.method == 'GET':
@@ -30,15 +30,18 @@ def post_new_resource(request):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
-@api_view(['GET', 'PUT', 'DELETE'])
+@api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def user_resources(request):
-    resource = get_object_or_404(Resource)
-    if request.method == 'GET':
         resources = Resource.objects.filter(user_id=request.user.id)
         serializer = ResourceSerializer(resources, many=True)
         return Response(serializer.data)
-    elif request.method == 'PUT':
+    
+@api_view(['PUT', 'DELETE'])
+@permission_classes([IsAuthenticated])
+def edit_resources(request, pk):
+    resource = get_object_or_404(Resource, pk=pk)   
+    if request.method == 'PUT':
         serializer = ResourceSerializer(resource, data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
