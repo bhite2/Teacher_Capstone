@@ -24,5 +24,6 @@ urlpatterns = [
     path('api/cars/', include('cars.urls')),
     path('api/resources/', include('resources.urls')),
     path('api/friendslist/', include('friendslist.urls')),
-    # path('api/comments/', include()),
+    path('api/comments/', include('comments.urls')),
+    path('api/ratings/', include('ratings.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

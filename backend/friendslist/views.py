@@ -26,3 +26,10 @@ def add_friend(request):
         serializer.save(user=request.user)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def users_friends(request):
+    friends = AddFriend.objects.filter(addfriend_id=request.addfriend.user_id)
+    serializer = AddFriendSerializer(friends, many=True)
+    return Response(serializer.data)
