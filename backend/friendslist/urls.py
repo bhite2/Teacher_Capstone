@@ -7,5 +7,5 @@ urlpatterns = [
    
     path('friends/', views.users_friends),
     path('all/', views.get_all_users),
-    # path('post/', views.post_new_resource),
+    path('add/user/<int:user_pk>/friend/<int:friend_pk>/', views.add_friend),
 ]

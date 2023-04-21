@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
@@ -18,15 +17,24 @@ def get_all_users(request):
     serializer = RegistrationSerializer(users, many=True)
     return Response(serializer.data)
 
-@api_view(['POST'])
+@api_view(['PATCH'])
 @permission_classes([IsAuthenticated])
-def add_friend(request):
-    serializer = AddFriendSerializer(data=request.data)
-    if serializer.is_valid():
-        serializer.save(user=request.user)
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
-    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
+def add_friend(request, user_pk, friend_pk):
+    try:
+        user = User.objects.get(pk=user_pk)
+    except:
+        return Response ({"Friend not found!"}, status=status.HTTP_404_NOT_FOUND)
+    
+    try:
+        friend = User.objects.get(pk=friend_pk)
+    except:
+        return Response ({"User not found!"}, status=status.HTTP_404_NOT_FOUND)
+    
+    user.friend.add(friend)
+    user.save()
+    serializer = AddFriendSerializer(user)
+    return Response(serializer.data, status=status.HTTP_200_OK)
+    
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def users_friends(request):

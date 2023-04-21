@@ -5,7 +5,5 @@ from ratings import views
 
 urlpatterns = [
    
-    path('', views.users_friends),
-    path('', views.get_all_users),
-    # path('post/', views.post_new_resource),
+    path('rate/<int:post_id>/<int:rating>/', views.resource_rating),
 ]
