@@ -1,7 +1,7 @@
 from django.db import models
 from gradelevels.models import GradeLevel
 from authentication.models import User
-
+from django.db.models import Avg
 
 # Create your models here.
 
@@ -15,6 +15,9 @@ class Resource(models.Model):
     subject = models.CharField(max_length=255)
     grade_level = models.ManyToManyField(GradeLevel)
     file = models.FileField(upload_to=upload_to, blank=True, null=True, max_length=255)
+    
+    def average_rating(self) -> float:
+        return Rating.objects.filter(resource=self).aggregate(Avg("rating"))["rating__avg"] or 0
     
     
 class Rating(models.Model):

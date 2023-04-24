@@ -10,6 +10,9 @@ const RegisterPage = () => {
     password: "",
     firstName: "",
     lastName: "",
+    grade: "",
+    district: "",
+    state: "",
   };
   const [formData, handleInputChange, handleSubmit] = useCustomForm(
     defaultValues,
@@ -43,6 +46,33 @@ const RegisterPage = () => {
             type="text"
             name="lastName"
             value={formData.lastName}
+            onChange={handleInputChange}
+          />
+        </label>
+        <label>
+          Grade:{" "}
+          <input
+            type="text"
+            name="grade"
+            value={formData.grade}
+            onChange={handleInputChange}
+          />
+        </label>
+        <label>
+          District:{" "}
+          <input
+            type="text"
+            name="district"
+            value={formData.district}
+            onChange={handleInputChange}
+          />
+        </label>
+        <label>
+          State:{" "}
+          <input
+            type="text"
+            name="lastName"
+            value={formData.state}
             onChange={handleInputChange}
           />
         </label>

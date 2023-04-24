@@ -7,7 +7,7 @@ const CreateResource = (props) => {
     const[description, setDescription] = useState('')
     const[subject, setSubject] = useState('')
     const[grade_level, setGradeLevel] = useState('')
-    const[file, setSet] = useState('')
+    const[file, setFile] = useState('')
 
     async function CreateResource(newResource) {
         const response = await axios.post('http://127.0.0.1:8000/api/resources/', newResource);
