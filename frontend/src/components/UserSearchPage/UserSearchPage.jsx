@@ -11,19 +11,19 @@ const UserSearchPage = (props) => {
                 </tr>
             </thead>
             <tbody>
-                {props.songs
-                .filter((song) => song.title.toLowerCase().includes(props.search.toLowerCase()) ||
-                song.artist.toLowerCase().includes(props.search.toLowerCase()) ||
-                song.album.toLowerCase().includes(props.search.toLowerCase()) ||
+                {props.users
+                .filter((user) => user.grade_level.toLowerCase().includes(props.search.toLowerCase()) ||
+                user.district.toLowerCase().includes(props.search.toLowerCase()) ||
+                user.state.toLowerCase().includes(props.search.toLowerCase()) ||
                 song.genre.toLowerCase().includes(props.search.toLowerCase()) ||
                 song.release_date.includes(props.search))
                 .map((song) => {
                     return (
                         <tr>
-                            <td>{song.user_name}</td>
-                            <td>{song.grade_level}</td>
-                            <td>{song.district}</td>
-                            <td>{song.state}</td>
+                            <td>{user.user_name}</td>
+                            <td>{user.grade_level}</td>
+                            <td>{user.district}</td>
+                            <td>{user.state}</td>
                         </tr>
                     )
                 })}

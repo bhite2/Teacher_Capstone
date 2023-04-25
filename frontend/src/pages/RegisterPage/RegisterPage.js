@@ -71,7 +71,7 @@ const RegisterPage = () => {
           State:{" "}
           <input
             type="text"
-            name="lastName"
+            name="state"
             value={formData.state}
             onChange={handleInputChange}
           />

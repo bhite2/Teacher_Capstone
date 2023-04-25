@@ -1,6 +1,15 @@
+import React, {useState} from "react";
+import axios from "axios";
+
 const AddFriend = () => {
+    
+    
+    
+    
     return ( 
-        <div>Hi</div>
+        <div>
+            <button>Add Friend</button>
+        </div>
      );
 }
  

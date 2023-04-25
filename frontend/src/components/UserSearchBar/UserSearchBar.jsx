@@ -1,4 +1,4 @@
-const SearchBar = (props) => {
+const UserSearchBar = (props) => {
     
 
     return ( 
@@ -10,4 +10,4 @@ const SearchBar = (props) => {
      );
 }
  
-export default SearchBar;
+export default UserSearchBar;

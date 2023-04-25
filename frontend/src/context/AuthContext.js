@@ -28,6 +28,7 @@ export const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
 
   const registerUser = async (registerData) => {
+    debugger
     try {
       let finalData = {
         username: registerData.username,
@@ -35,6 +36,9 @@ export const AuthProvider = ({ children }) => {
         email: registerData.email,
         first_name: registerData.firstName,
         last_name: registerData.lastName,
+        user_grade: registerData.grade,
+        user_district: registerData.district,
+        user_state: registerData.state,
       };
       let response = await axios.post(`${BASE_URL}/register/`, finalData);
       if (response.status === 201) {

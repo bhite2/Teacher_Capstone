@@ -16,12 +16,6 @@ class Resource(models.Model):
     grade_level = models.ManyToManyField(GradeLevel)
     file = models.FileField(upload_to=upload_to, blank=True, null=True, max_length=255)
     
-    def average_rating(self) -> float:
-        return Rating.objects.filter(resource=self).aggregate(Avg("rating"))["rating__avg"] or 0
-    
-    
-class Rating(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    resource = models.ForeignKey(Resource, on_delete=models.CASCADE)
-    rating = models.IntegerField(default=0)
+    def __str__(self) -> str:
+        return f"{self.title}"
     
