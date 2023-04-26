@@ -7,4 +7,5 @@ class ResourceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Resource
         fields = ['id', 'title', 'description', 'subject', 'grade_level', 'file']
+        depth = 1
       

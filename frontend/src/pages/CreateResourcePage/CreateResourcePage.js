@@ -1,4 +1,4 @@
-import CreateResource from "../../components/CreateResource/CreateResource";
+import CreateResourcePage from "../../components/CreateResource/CreateResource";
 
 
 const CreateResource = () => {
@@ -6,7 +6,7 @@ const CreateResource = () => {
    
     return ( 
         <div>
-            <CreateResource/>
+            <CreateResourcePage/>
         </div>
      );
 }

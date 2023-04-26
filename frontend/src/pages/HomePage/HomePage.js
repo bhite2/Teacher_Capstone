@@ -21,7 +21,7 @@ const HomePage = () => {
         });
         setResources(response.data);
       } catch (error) {
-        console.log(error.response.data);
+        console.log(error.message);
       }
     };
     fetchResources();
@@ -33,7 +33,7 @@ const HomePage = () => {
       {resources &&
         resources.map((resource) => (
           <p key={resource.id}>
-            {resource.title} {resource.grade_level}
+            {resource.title} {resource.grade_level.map((element) => element.level)}
           </p>
         ))}
       <h4>Shared with Me</h4>

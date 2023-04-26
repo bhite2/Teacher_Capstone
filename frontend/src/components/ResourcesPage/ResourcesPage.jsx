@@ -43,7 +43,7 @@ const ResourcesPage = (props) => {
                 </Link>
               </div> */}
               <div className="title">{resource.title}</div>
-              <div className="description">{resource.grade_level}</div>
+              <div className="description">{resource.grade_level.map((element) => element.level)}</div>
             </div>
           );
         })}

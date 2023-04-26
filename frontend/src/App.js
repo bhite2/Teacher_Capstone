@@ -7,6 +7,8 @@ import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import ResourcesPage from "./components/ResourcesPage/ResourcesPage";
+import UsersPage from "./pages/UsersPage/UsersPage";
+import CreateResourcePage from "./pages/CreateResourcePage/CreateResourcePage";
 
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
@@ -31,7 +33,8 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/resource" element={<ResourcesPage />} />
-        {/* <Route path="/friends" element={<FriendsPage />} /> */}
+        <Route path="/users" element={<UsersPage />} />
+        <Route path="/create" element={<CreateResourcePage />} />
       </Routes>
       <Footer />
     </div>

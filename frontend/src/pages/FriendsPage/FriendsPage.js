@@ -1,4 +1,3 @@
-import SearchPage from "../../components/FriendsPage/FriendsPage";
 
 
 const Friends = () => {

@@ -1,6 +1,35 @@
+import UserSearchBar from "../UserSearchBar/UserSearchBar";
+import axios from "axios";
+import React, {useState, useEffect} from "react";
+import useAuth from "../../hooks/useAuth";
+
 
 const UserSearchPage = (props) => {
+    const [user, token] = useAuth();
+    const [users, setUsers] = useState([]);
+    const [filter, setFilter] = useState('')
+  
+    useEffect(() => {
+      const allUsers = async () => {
+        try {
+          let response = await axios.get("http://127.0.0.1:8000/api/friendslist/all/", {
+            headers: {
+              Authorization: "Bearer " + token,
+            },
+          });
+          setUsers(response.data);
+        } catch (error) {
+          console.log(error.message);
+        }
+      };
+      allUsers();
+    }, [token]);
     return ( 
+    <div>
+        <div>
+            <UserSearchBar search = {filter} setSearch = {setFilter}/>
+        </div>
+            
         <table>
             <thead>
                 <tr>
@@ -11,24 +40,20 @@ const UserSearchPage = (props) => {
                 </tr>
             </thead>
             <tbody>
-                {props.users
-                .filter((user) => user.grade_level.toLowerCase().includes(props.search.toLowerCase()) ||
-                user.district.toLowerCase().includes(props.search.toLowerCase()) ||
-                user.state.toLowerCase().includes(props.search.toLowerCase()) ||
-                song.genre.toLowerCase().includes(props.search.toLowerCase()) ||
-                song.release_date.includes(props.search))
-                .map((song) => {
-                    return (
-                        <tr>
-                            <td>{user.user_name}</td>
-                            <td>{user.grade_level}</td>
-                            <td>{user.district}</td>
-                            <td>{user.state}</td>
-                        </tr>
-                    )
-                })}
+              {users.map((user) => {
+                return (
+                  <tr>
+                  <td>{user.username}</td>
+                  <td>{user.user_grade}</td>
+                  <td>{user.user_district}</td>
+                  <td>{user.user_state}</td>
+              </tr>
+              )
+              })}            
+
             </tbody>
         </table>
+    </div>
      );
 }
  
