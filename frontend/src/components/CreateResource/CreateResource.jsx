@@ -18,13 +18,14 @@ const CreateResourcePage = (props) => {
             {
                 headers: {
                   Authorization: "Bearer " + token,
+                  "Content-Type": "multipart/form-data",
                 },
               });
             if(response.status === 201){
-                await props.allResources()
+                // await props.allResources()
             }
         } catch (error) {
-            console.log(error.response.data);
+            console.log(error);
           }
 
     }
@@ -39,8 +40,15 @@ const CreateResourcePage = (props) => {
         newEntry.append('file', file)
         console.log(newEntry);
         CreateResource(newEntry)
-
         }
+
+    const handleClick = () => {
+            setTitle('');
+            setDescription('');
+            setSubject('');
+            setGradeLevel('');
+            setFile('');
+          };    
 
     return ( 
         
@@ -57,8 +65,13 @@ const CreateResourcePage = (props) => {
         </div>
         <div className='form-group'>
             <label>Subject:</label>
-            <input type='text' className='form-control' value={subject} onChange={(event) => setSubject(event.target.value)}/>
-
+            {/* <input type='select' className='form-control' value={subject} onChange={(event) => setSubject(event.target.value)}/> */}
+            <select id="subjects" name="subjects" className='form-control' value={subject} onChange={(event) => setSubject(event.target.value)}>
+                <option value="" disabled selected hidden>Select a Subject</option>
+                <option value="reading">Reading</option>
+                <option value="math">Math</option>
+                <option value="science">Science</option>
+            </select>
         </div>
         <div className='form-group'>
             <label>Grade Level:</label>
@@ -91,10 +104,10 @@ const CreateResourcePage = (props) => {
         </div>
         <div className='form-group'>
             <label>File:</label>
-            <input type='file' className='form-control' value={file} onChange={(event) => setFile(event.target.value)}/>
+            <input type='file' className='form-control' onChange={(event) => setFile(event.target.files[0])}/>
 
         </div>
-        <button type='submit' className='btn btn-primary' style={{'margin-top': '1em'}}>Create</button>
+        <button type='submit' className='btn btn-primary' style={{'margin-top': '1em'}} onClick={handleClick}>Create</button>
     </form>
      );
 }
