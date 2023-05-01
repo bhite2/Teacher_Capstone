@@ -6,9 +6,11 @@ import "./App.css";
 import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
-import ResourcesPage from "./components/ResourcesPage/ResourcesPage";
+import Resources from "./pages/Resources/Resources";
+import Resource from "./pages/Resource/Resource";
 import UsersPage from "./pages/UsersPage/UsersPage";
 import CreateResourcePage from "./pages/CreateResourcePage/CreateResourcePage";
+import Friends from "./pages/FriendsPage/FriendsPage";
 
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
@@ -32,8 +34,10 @@ function App() {
         />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/resource" element={<ResourcesPage />} />
+        <Route path="/resources/" element={<Resources />} />
+        <Route path="/resource/:resourceID" element={<Resource />} />
         <Route path="/users" element={<UsersPage />} />
+        <Route path="/friends" element={<Friends />} />
         <Route path="/create" element={<CreateResourcePage />} />
       </Routes>
       <Footer />

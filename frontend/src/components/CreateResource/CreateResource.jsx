@@ -1,14 +1,38 @@
 import React, {useState} from "react";
 import axios from "axios";
+import Select from "react-select";
 import useAuth from "../../hooks/useAuth";
+
+
+const subject_options = [
+    {value: 'reading', label: 'Reading'},
+    {value: 'math', label: 'Math'},
+    {value: 'science', label: 'Science'},
+]
+const grade_options = [
+    { value: 'K', label: 'K' },
+    { value: '1st', label: '1st' },
+    { value: '2nd', label: '2nd' },
+    { value: '3rd', label: '3rd' },
+    { value: '4th', label: '4th' },
+    { value: '5th', label: '5th' },
+    { value: '6th', label: '6th' },
+    { value: '7th', label: '7th' },
+    { value: '8th', label: '8th' },
+    { value: '9th', label: '9th' },
+    { value: '10th', label: '10th' },
+    { value: '11th', label: '11th' },
+    { value: '12th', label: '12th' },
+]
+
 
 const CreateResourcePage = (props) => {
 
     const[title, setTitle] = useState('')
     const[description, setDescription] = useState('')
-    const[subject, setSubject] = useState('')
-    const[grade_level, setGradeLevel] = useState('')
-    const[file, setFile] = useState('')
+    const[subject, setSubject] = useState(null)
+    const[grade_level, setGradeLevel] = useState(null)
+    const[file, setFile] = useState(null)
     const[user, token] = useAuth();
 
     
@@ -22,16 +46,17 @@ const CreateResourcePage = (props) => {
                 },
               });
             if(response.status === 201){
-                // await props.allResources()
+                
             }
         } catch (error) {
-            console.log(error);
+            console.log(error.response.data);
           }
 
     }
 
     function handleSubmit(event) {
         event.preventDefault();
+        console.log(grade_level)
         let newEntry = new FormData();
         newEntry.append('title', title)
         newEntry.append('description', description)
@@ -40,15 +65,13 @@ const CreateResourcePage = (props) => {
         newEntry.append('file', file)
         console.log(newEntry);
         CreateResource(newEntry)
+        setTitle('');
+        setDescription('');
+        setSubject(null);
+        setGradeLevel(null);
+        setFile(null);
         }
 
-    const handleClick = () => {
-            setTitle('');
-            setDescription('');
-            setSubject('');
-            setGradeLevel('');
-            setFile('');
-          };    
 
     return ( 
         
@@ -65,49 +88,18 @@ const CreateResourcePage = (props) => {
         </div>
         <div className='form-group'>
             <label>Subject:</label>
-            {/* <input type='select' className='form-control' value={subject} onChange={(event) => setSubject(event.target.value)}/> */}
-            <select id="subjects" name="subjects" className='form-control' value={subject} onChange={(event) => setSubject(event.target.value)}>
-                <option value="" disabled selected hidden>Select a Subject</option>
-                <option value="reading">Reading</option>
-                <option value="math">Math</option>
-                <option value="science">Science</option>
-            </select>
+            <Select className='form-control' options={subject_options} value={subject} onChange={(event) => setSubject(event.target.value)}/>
         </div>
         <div className='form-group'>
             <label>Grade Level:</label>
-            <input type="checkbox"className='form-control' value={grade_level} onChange={(event) => setGradeLevel(event.target.value)}></input>
-            <label for="gradek"> K</label><br></br>
-            <input type="checkbox" className='form-control' value={grade_level} onChange={(event) => setGradeLevel(event.target.value)}></input>
-            <label for="grade1"> 1st</label><br></br>
-            <input type="checkbox" className='form-control' value={grade_level} onChange={(event) => setGradeLevel(event.target.value)}></input>
-            <label for="grade2"> 2nd</label><br></br>
-            <input type="checkbox" className='form-control' value={grade_level} onChange={(event) => setGradeLevel(event.target.value)}></input>
-            <label for="grade3"> 3rd</label><br></br>
-            <input type="checkbox" className='form-control' value={grade_level} onChange={(event) => setGradeLevel(event.target.value)}></input>
-            <label for="grade4"> 4th</label><br></br>
-            <input type="checkbox" className='form-control' value={grade_level} onChange={(event) => setGradeLevel(event.target.value)}></input>
-            <label for="grade5"> 5th</label><br></br>
-            <input type="checkbox" className='form-control' value={grade_level} onChange={(event) => setGradeLevel(event.target.value)}></input>
-            <label for="grade6"> 6th</label><br></br>
-            <input type="checkbox" className='form-control' value={grade_level} onChange={(event) => setGradeLevel(event.target.value)}></input>
-            <label for="grade7"> 7th</label><br></br>
-            <input type="checkbox" className='form-control' value={grade_level} onChange={(event) => setGradeLevel(event.target.value)}></input>
-            <label for="grade8">8th</label><br></br>
-            <input type="checkbox" className='form-control' value={grade_level} onChange={(event) => setGradeLevel(event.target.value)}></input>
-            <label for="grade9">9th</label><br></br>
-            <input type="checkbox" className='form-control' value={grade_level} onChange={(event) => setGradeLevel(event.target.value)}></input>
-            <label for="grade10">10th</label><br></br>
-            <input type="checkbox" className='form-control' value={grade_level} onChange={(event) => setGradeLevel(event.target.value)}></input>
-            <label for="grade11"> 11th</label><br></br>
-            <input type="checkbox" className='form-control' value={grade_level} onChange={(event) => setGradeLevel(event.target.value)}></input>
-            <label for="grade12"> 12th</label><br></br>
+            <Select className='form-control' isMulti options={grade_options} value={grade_level} onChange={(event) => setGradeLevel(event.target.value)}/>
         </div>
         <div className='form-group'>
             <label>File:</label>
             <input type='file' className='form-control' onChange={(event) => setFile(event.target.files[0])}/>
 
         </div>
-        <button type='submit' className='btn btn-primary' style={{'margin-top': '1em'}} onClick={handleClick}>Create</button>
+        <button type='submit' className='btn btn-primary' style={{'margin-top': '1em'}}>Create</button>
     </form>
      );
 }

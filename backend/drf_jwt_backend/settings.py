@@ -47,7 +47,8 @@ INSTALLED_APPS = [
     'replies',
     'resources',
     'gradelevels',
-    'ratings'
+    'ratings',
+    'shareresource'
 ]
 
 MIDDLEWARE = [

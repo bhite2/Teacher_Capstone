@@ -1,8 +1,6 @@
 
 import ResourcesPage from "../../components/ResourcesPage/ResourcesPage";
-import Resources from "../../components/ResourcesPage/ResourcesPage";
-Resources
-const Resource = () => {
+const Resources = () => {
 
    
     return ( 
@@ -12,4 +10,4 @@ const Resource = () => {
      );
 }
  
-export default Resource;
+export default Resources;

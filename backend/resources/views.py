@@ -15,9 +15,18 @@ parser_classes = (MultiPartParser, FormParser)
 @api_view(['GET'])
 @permission_classes([AllowAny])
 def get_all_resources(request):
+    print("Get all resources hit")
     if request.method == 'GET':
         resources = Resource.objects.all()
         serializer = ResourceSerializer(resources, many=True)
+        return Response(serializer.data)
+    
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def resource_details(request, pk):
+    resource = get_object_or_404(Resource, pk=pk)
+    if request.method == "GET":
+        serializer = ResourceSerializer(resource)
         return Response(serializer.data)
     
 @api_view(["POST"])

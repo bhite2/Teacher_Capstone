@@ -1,4 +1,4 @@
-
+import FriendsPage from "../../components/FriendsPage/FriendsPage";
 
 const Friends = () => {
 

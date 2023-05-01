@@ -1,11 +1,13 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios";
 import SearchBar from "../SearchBar/SearchBar";
+import { Link } from "react-router-dom";
 
 const ResourcesPage = (props) => {
 
     const [resources, setResources] = useState([]);
     const [searchInput, setSearchInput] = useState("");
+   
 
     async function allResources() {
         const response = await axios.get('http://127.0.0.1:8000/api/resources/all/');
@@ -42,8 +44,13 @@ const ResourcesPage = (props) => {
                   <img src={video.snippet.thumbnails.medium.url} />
                 </Link>
               </div> */}
-              <div className="title">{resource.title}</div>
-              <div className="description">{resource.grade_level.map((element) => element.level)}</div>
+              {/* <div className="file">
+                {resource.file}
+              </div> */}
+              <Link to={`/resource/${resource.id}`}>
+                  <div className="title">{resource.title}</div>
+              </Link>
+              <div className="grade_level">{resource.grade_level.map((element) => element.level)}</div>
             </div>
           );
         })}

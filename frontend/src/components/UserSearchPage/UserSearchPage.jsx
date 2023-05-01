@@ -2,6 +2,7 @@ import UserSearchBar from "../UserSearchBar/UserSearchBar";
 import axios from "axios";
 import React, {useState, useEffect} from "react";
 import useAuth from "../../hooks/useAuth";
+import AddFriend from "../AddFriend/AddFriend";
 
 
 const UserSearchPage = (props) => {
@@ -28,31 +29,30 @@ const UserSearchPage = (props) => {
     <div>
         <div>
             <UserSearchBar search = {filter} setSearch = {setFilter}/>
-        </div>
-            
-        <table>
-            <thead>
-                <tr>
-                    <th>User</th>
-                    <th>Grade Level</th>
-                    <th>District</th>
-                    <th>State</th>
-                </tr>
-            </thead>
-            <tbody>
-              {users.map((user) => {
-                return (
-                  <tr>
-                  <td>{user.username}</td>
-                  <td>{user.user_grade}</td>
-                  <td>{user.user_district}</td>
-                  <td>{user.user_state}</td>
-              </tr>
-              )
-              })}            
-
-            </tbody>
-        </table>
+        </div>  
+            <table>
+                <thead>
+                    <tr>
+                        <th>User</th>
+                        <th>Grade Level</th>
+                        <th>District</th>
+                        <th>State</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  {users.map((user) => {
+                    return (
+                      <tr>
+                      <td>{user.username}</td>
+                      <td>{user.user_grade}</td>
+                      <td>{user.user_district}</td>
+                      <td>{user.user_state}</td>
+                      <td><AddFriend users={users}/></td>
+                  </tr>
+                  )
+                  })}            
+                </tbody>
+            </table>
     </div>
      );
 }
