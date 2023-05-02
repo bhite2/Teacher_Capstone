@@ -10,19 +10,19 @@ const subject_options = [
     {value: 'science', label: 'Science'},
 ]
 const grade_options = [
-    { value: 'K', label: 'K' },
-    { value: '1st', label: '1st' },
-    { value: '2nd', label: '2nd' },
-    { value: '3rd', label: '3rd' },
-    { value: '4th', label: '4th' },
-    { value: '5th', label: '5th' },
-    { value: '6th', label: '6th' },
-    { value: '7th', label: '7th' },
-    { value: '8th', label: '8th' },
-    { value: '9th', label: '9th' },
-    { value: '10th', label: '10th' },
-    { value: '11th', label: '11th' },
-    { value: '12th', label: '12th' },
+    { value: 0, label: 'K' },
+    { value: 1, label: '1st' },
+    { value: 2, label: '2nd' },
+    { value: 3, label: '3rd' },
+    { value: 4, label: '4th' },
+    { value: 5, label: '5th' },
+    { value: 6, label: '6th' },
+    { value: 7, label: '7th' },
+    { value: 8, label: '8th' },
+    { value: 9, label: '9th' },
+    { value: 10, label: '10th' },
+    { value: 11, label: '11th' },
+    { value: 12, label: '12th' },
 ]
 
 
@@ -56,12 +56,15 @@ const CreateResourcePage = (props) => {
 
     function handleSubmit(event) {
         event.preventDefault();
+        console.log(subject.value)
         console.log(grade_level)
+        debugger
         let newEntry = new FormData();
+        let gradeArray = grade_level.map(el => el.value)
         newEntry.append('title', title)
         newEntry.append('description', description)
-        newEntry.append('subject', subject)
-        newEntry.append('grade_level', grade_level)
+        newEntry.append('subject', subject.value)
+        newEntry.append('grade_level', gradeArray)
         newEntry.append('file', file)
         console.log(newEntry);
         CreateResource(newEntry)
@@ -88,11 +91,11 @@ const CreateResourcePage = (props) => {
         </div>
         <div className='form-group'>
             <label>Subject:</label>
-            <Select className='form-control' options={subject_options} value={subject} onChange={(event) => setSubject(event.target.value)}/>
+            <Select className='form-control' options={subject_options} value={subject} onChange={setSubject}/>
         </div>
         <div className='form-group'>
             <label>Grade Level:</label>
-            <Select className='form-control' isMulti options={grade_options} value={grade_level} onChange={(event) => setGradeLevel(event.target.value)}/>
+            <Select className='form-control' isMulti options={grade_options} value={grade_level} onChange={setGradeLevel}/>
         </div>
         <div className='form-group'>
             <label>File:</label>

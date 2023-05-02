@@ -33,9 +33,13 @@ def resource_details(request, pk):
 @permission_classes([IsAuthenticated])
 def post_new_resource(request):
     if request.method == 'POST':
+        grade_list = request.POST.getlist('grade_level')
+        print(grade_list)
         serializer = ResourceSerializer(data=request.data)
+        mod_grade_list = [int(s) for s in grade_list[0].split(',')]
         if serializer.is_valid():
-            serializer.save(user=request.user)
+            resource = serializer.save(user=request.user)
+            resource.grade_level.set(mod_grade_list)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     

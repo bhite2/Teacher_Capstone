@@ -47,7 +47,7 @@ const UserSearchPage = (props) => {
                       <td>{user.user_grade}</td>
                       <td>{user.user_district}</td>
                       <td>{user.user_state}</td>
-                      <td><AddFriend users={users}/></td>
+                      <td><AddFriend users={users} user={user}/></td>
                   </tr>
                   )
                   })}            

@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import EditResource from "../EditResource/EditResource";
+import DeleteResource from "../DeleteResource/DeleteResource";
 
 
 
@@ -26,13 +28,27 @@ const ResourcePage = (props) => {
     return ( 
     
         <div>   
-          {resourceDetails && <div>
+          {resourceDetails && 
+          <div>
             <div>
               {resourceDetails.title}
             </div>
-            {resourceDetails.description}
-            {resourceDetails.grade_level && resourceDetails.grade_level.map(grade => <p>{grade.level}</p>)}
-            </div>}  
+            <div>
+              {resourceDetails.description}
+            </div>
+            <div>
+              {resourceDetails.grade_level && resourceDetails.grade_level.map(grade => <p>{grade.level}</p>)}
+            </div>
+            <div>
+              <EditResource resourceID={resourceID}/>
+            </div>
+            <div>
+              <DeleteResource resourceID={resourceID}/>
+            </div>
+
+            
+            
+          </div>}  
             
                   
                 

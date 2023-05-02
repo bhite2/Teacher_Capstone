@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import axios from "axios";
 import SearchBar from "../SearchBar/SearchBar";
 import { Link } from "react-router-dom";
+import './ResourcesPage.css'
 
 const ResourcesPage = (props) => {
 
@@ -38,7 +39,7 @@ const ResourcesPage = (props) => {
         <div className="grid-container">
              {resources.map((resource) => {
           return (
-            <div className="videocard">
+            <div className="file_image">
               {/* <div>
                 <Link to={`/video/${video.id.videoId}`}>
                   <img src={video.snippet.thumbnails.medium.url} />
