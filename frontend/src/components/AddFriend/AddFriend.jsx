@@ -6,9 +6,9 @@ const AddFriend = (props) => {
 
     const[addFriend, setAddFriend] = useState()
     const[user, token] = useAuth();
-    
+
     async function AddFriend() {
-        const response = await axios.patch('http://127.0.0.1:8000/api/friendslist/add/user/1/friend/3/', 
+        const response = await axios.patch(`http://127.0.0.1:8000/api/friendslist/add/user/${props.user.id}/friend/${props.users.id}/`, 
         {
             headers: {
                 Authorization: 'Bearer' + token 
