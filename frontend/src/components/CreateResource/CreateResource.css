@@ -1,0 +1,19 @@
+.form-group{
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
+/* .form-description {
+    width: 200px;
+    height: 200px;
+    
+    
+} */
+
+label {
+    font-size: large;
+    margin: .5em
+    ;
+}

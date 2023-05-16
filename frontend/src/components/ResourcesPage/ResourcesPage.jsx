@@ -36,7 +36,7 @@ const ResourcesPage = (props) => {
             handleSubmit={handleSubmit}
           />
         </div>
-        <div className="grid-container">
+        <div className="grid-container" key={resources.id}>
              {resources.map((resource) => {
           return (
             <div className="file_image">

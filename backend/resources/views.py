@@ -34,7 +34,6 @@ def resource_details(request, pk):
 def post_new_resource(request):
     if request.method == 'POST':
         grade_list = request.POST.getlist('grade_level')
-        print(grade_list)
         serializer = ResourceSerializer(data=request.data)
         mod_grade_list = [int(s) for s in grade_list[0].split(',')]
         if serializer.is_valid():

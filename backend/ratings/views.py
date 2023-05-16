@@ -12,7 +12,12 @@ def resource_rating(request):
     serializer = RatingSerializer(ratings, many=True)
     return Response(serializer.data)
 
-# @api_view(['POST'])
-# @permission_classes([IsAuthenticated])
-# def rate_resource(request):
-#     serializer = RatingSerializer.objects.
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def rate_resource(request):
+    if request.method == 'POST':
+        serializer = RatingSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save(user=request.user)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

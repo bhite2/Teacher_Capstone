@@ -3,6 +3,7 @@ import axios from "axios";
 import React, {useState, useEffect} from "react";
 import useAuth from "../../hooks/useAuth";
 import AddFriend from "../AddFriend/AddFriend";
+import './UserSearchPage.css'
 
 
 const UserSearchPage = (props) => {
@@ -27,10 +28,10 @@ const UserSearchPage = (props) => {
     }, [token]);
     return ( 
     <div>
-        <div>
-            <UserSearchBar search = {filter} setSearch = {setFilter}/>
+        <div className="searchbar">
+            <UserSearchBar users={users} search = {filter} setSearch = {setFilter}/>
         </div>  
-            <table>
+            <table className="userinfo">
                 <thead>
                     <tr>
                         <th>User</th>
@@ -47,7 +48,7 @@ const UserSearchPage = (props) => {
                       <td>{user.user_grade}</td>
                       <td>{user.user_district}</td>
                       <td>{user.user_state}</td>
-                      <td><AddFriend users={users} user={user}/></td>
+                      <td><AddFriend user = {user}/></td>
                   </tr>
                   )
                   })}            

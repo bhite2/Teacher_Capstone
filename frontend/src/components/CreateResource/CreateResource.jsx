@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import axios from "axios";
 import Select from "react-select";
 import useAuth from "../../hooks/useAuth";
+import "./CreateResource.css"
 
 
 const subject_options = [
@@ -56,9 +57,6 @@ const CreateResourcePage = (props) => {
 
     function handleSubmit(event) {
         event.preventDefault();
-        console.log(subject.value)
-        console.log(grade_level)
-        debugger
         let newEntry = new FormData();
         let gradeArray = grade_level.map(el => el.value)
         newEntry.append('title', title)
@@ -91,7 +89,7 @@ const CreateResourcePage = (props) => {
         </div>
         <div className='form-group'>
             <label>Subject:</label>
-            <Select className='form-control' options={subject_options} value={subject} onChange={setSubject}/>
+            <Select className='form-description' options={subject_options} value={subject} onChange={setSubject}/>
         </div>
         <div className='form-group'>
             <label>Grade Level:</label>

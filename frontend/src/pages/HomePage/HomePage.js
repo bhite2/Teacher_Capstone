@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const HomePage = () => {
   const [user, token] = useAuth();
@@ -22,37 +23,63 @@ const HomePage = () => {
     };
     fetchResources();
   }, [token]);
+
+  let reading = resources.filter(el => {
+    return el.subject === 'reading';});
+    console.log(reading)
+
+  let math = resources.filter(el => {
+    return el.subject === 'math';});
+    console.log(math)
+  
+  let science = resources.filter(el => {
+    return el.subject === 'science';});
+    console.log(science)
+
   return (
-    <div>
+    <div className="container">
+      <div>
+        <Link to={'/create'}>
+        Create New Resource 
+        </Link>
+           
+      </div>
       <div>
         <h1>{user.username} resources page!</h1>
       </div>
+      <div className="flex-container">
+        <div className="flex.a">
+          <h2>Reading</h2>
+            <ul className="flex-ul">
+              {reading.map((reading) => {
+                return (
+                  <li key={reading.id}>{reading.title}</li>
+                )
+              })}
+            </ul>
+        </div>
+        <div className="flex.b">
+          <h2>Math</h2>
+            <ul className="flex-ul">
+              {math.map((math) => {
+                return (
+                  <li key={math.id}>{math.title}</li>
+                )
+              })}
+            </ul>
+        </div>
+        <div className="flex.c">
+          <h2>Science</h2>
+            <ul className="flex-ul">
+              {science.map((science) => {
+                return (
+                  <li key={science.id}>{science.title}</li>
+                )
+              })}
+            </ul>
+        </div>
+      </div>
       
-      <div>
-        <h4>Reading</h4>
-          <ul>
-            <li></li>
-          </ul>
-      </div>
-      <div>
-        <h4>Math</h4>
-          <ul>
-            <li></li>
-          </ul>
-      </div>
-      <div>
-        <h4>Science</h4>
-          <ul>
-            <li></li>
-          </ul>
-      </div>
-
-      {resources &&
-        resources.map((resource) => (
-          <p key={resource.id}>
-            {resource.title} {resource.grade_level.map((element) => element.level)}
-          </p>
-        ))}
       <h4>Shared with Me</h4>
     </div>
   );

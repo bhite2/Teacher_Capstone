@@ -3,6 +3,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import EditResource from "../EditResource/EditResource";
 import DeleteResource from "../DeleteResource/DeleteResource";
+import './ResourcePage.css'
 
 
 
@@ -29,12 +30,15 @@ const ResourcePage = (props) => {
     
         <div>   
           {resourceDetails && 
-          <div>
-            <div>
+          <div className="flex-container">
+            <div className="title" key={resourceDetails.id}>
               {resourceDetails.title}
             </div>
             <div>
               {resourceDetails.description}
+            </div>
+            <div>
+              {resourceDetails.subject}
             </div>
             <div>
               {resourceDetails.grade_level && resourceDetails.grade_level.map(grade => <p>{grade.level}</p>)}

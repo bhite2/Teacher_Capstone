@@ -1,0 +1,13 @@
+.flex-friend {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 1em;
+}
+
+.subject-grade {
+    display: flex;
+    flex-direction: row;
+    margin: 1em;
+}
