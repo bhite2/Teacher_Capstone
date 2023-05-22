@@ -3,13 +3,19 @@ import axios from "axios";
 import React, {useState, useEffect} from "react";
 import useAuth from "../../hooks/useAuth";
 import AddFriend from "../AddFriend/AddFriend";
+<<<<<<< HEAD
 import './UserSearchPage.css'
+=======
+import { useParams } from "react-router-dom";
+>>>>>>> 44b06a4789b362670b29a5c93ad573dfe630941f
 
 
 const UserSearchPage = (props) => {
     const [user, token] = useAuth();
     const [users, setUsers] = useState([]);
     const [filter, setFilter] = useState('')
+    const {userID} = useParams();
+    const {friendID} = useParams();
   
     useEffect(() => {
       const allUsers = async () => {
@@ -48,7 +54,11 @@ const UserSearchPage = (props) => {
                       <td>{user.user_grade}</td>
                       <td>{user.user_district}</td>
                       <td>{user.user_state}</td>
+<<<<<<< HEAD
                       <td><AddFriend user = {user}/></td>
+=======
+                      <td><AddFriend user={user} users={users}/></td>
+>>>>>>> 44b06a4789b362670b29a5c93ad573dfe630941f
                   </tr>
                   )
                   })}            
