@@ -5,7 +5,6 @@ from shareresource import views
 
 urlpatterns = [
    
-    path('share/', views.users_friends),
-    path('all/', views.get_all_users),
-    path('add/user/<int:user_pk>/friend/<int:friend_pk>/', views.add_friend),
+    path('', views.shared_with_user),
+    path('user/<int:user_pk>/friends/<int:friends_pk>/resource/<int:resource_pk>/', views.share_resource),
 ]

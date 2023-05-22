@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import EditResource from "../EditResource/EditResource";
 import DeleteResource from "../DeleteResource/DeleteResource";
 import './ResourcePage.css'
+import FavoriteResource from "../FavoriteResource/FavoriteResource";
 
 
 
@@ -48,6 +49,9 @@ const ResourcePage = (props) => {
             </div>
             <div>
               <DeleteResource resourceID={resourceID}/>
+            </div>
+            <div>
+              <FavoriteResource resourceDetails={resourceDetails}/>
             </div>
 
             

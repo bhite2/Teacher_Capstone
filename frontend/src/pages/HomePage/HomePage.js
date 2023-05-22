@@ -37,51 +37,52 @@ const HomePage = () => {
     console.log(science)
 
   return (
-    <div className="container">
-      <div>
+    <div>
+      <div className="create">
         <Link to={'/create'}>
         Create New Resource 
-        </Link>
-           
-      </div>
-      <div>
-        <h1>{user.username} resources page!</h1>
+        </Link>     
       </div>
       <div className="flex-container">
-        <div className="flex.a">
-          <h2>Reading</h2>
-            <ul className="flex-ul">
-              {reading.map((reading) => {
-                return (
-                  <li key={reading.id}>{reading.title}</li>
-                )
-              })}
-            </ul>
+        <div>
+          <h1>{user.username} resources page!</h1>
         </div>
-        <div className="flex.b">
-          <h2>Math</h2>
-            <ul className="flex-ul">
-              {math.map((math) => {
-                return (
-                  <li key={math.id}>{math.title}</li>
-                )
-              })}
-            </ul>
-        </div>
-        <div className="flex.c">
-          <h2>Science</h2>
-            <ul className="flex-ul">
-              {science.map((science) => {
-                return (
-                  <li key={science.id}>{science.title}</li>
-                )
-              })}
-            </ul>
-        </div>
+        <div className="flex-container.a">
+          <div>
+            <h2>Reading</h2>
+              <ul className="flex-ul">
+                {reading.map((reading) => {
+                  return (
+                    <li key={reading.id}>{reading.title}</li>
+                  )
+                })}
+              </ul>
+          </div>
+          <div>
+            <h2>Math</h2>
+              <ul className="flex-ul">
+                {math.map((math) => {
+                  return (
+                    <li key={math.id}>{math.title}</li>
+                  )
+                })}
+              </ul>
+          </div>
+          <div>
+            <h2>Science</h2>
+              <ul className="flex-ul">
+                {science.map((science) => {
+                  return (
+                    <li key={science.id}>{science.title}</li>
+                  )
+                })}
+              </ul>
+          </div>
       </div>
-      
       <h4>Shared with Me</h4>
+      </div>
     </div>
+
   );
 };
 

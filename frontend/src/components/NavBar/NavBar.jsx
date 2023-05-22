@@ -11,12 +11,12 @@ const Navbar = () => {
     <div className="navBar">
       <ul>
         <li className="brand">
-          <Link to="/resources" style={{ textDecoration: "none", color: "yellow" }}>
+          <Link to="/resources" style={{ textDecoration: "none", color: "yellow"}}>
             <b>Teachers Lounge</b>
           </Link>
         </li>
         <li className="brand">
-          <Link to="/" style={{ textDecoration: "none", color: "yellow" }}>
+          <Link to="/" style={{ textDecoration: "none", color: "yellow"}}>
             <p>My Resources</p>
           </Link>
         </li>

@@ -26,4 +26,6 @@ urlpatterns = [
     path('api/friendslist/', include('friendslist.urls')),
     path('api/comments/', include('comments.urls')),
     path('api/ratings/', include('ratings.urls')),
+    path('api/favorites/', include('favorites.urls')),
+    path('api/share/', include('shareresource.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

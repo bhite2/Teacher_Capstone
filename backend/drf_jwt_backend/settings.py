@@ -48,7 +48,8 @@ INSTALLED_APPS = [
     'resources',
     'gradelevels',
     'ratings',
-    'shareresource'
+    'shareresource',
+    'favorites'
 ]
 
 MIDDLEWARE = [

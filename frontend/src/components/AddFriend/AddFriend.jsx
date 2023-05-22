@@ -11,10 +11,10 @@ const AddFriend = (props) => {
     
     async function AddFriend() {
         
-            const response = await axios.patch(`http://127.0.0.1:8000/api/friendslist/add/user/${user.id}/friend/${props.user.id}/`, 
+            const response = await axios.patch(`http://127.0.0.1:8000/api/friendslist/add/user/${user.id}/friend/${props.user.id}/`, {}, 
             {
                 headers: {
-                    Authorization: 'Bearer' + token 
+                    Authorization: 'Bearer ' + token 
                 }
             });
             console.log(response.data);
