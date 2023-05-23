@@ -14,7 +14,7 @@ from .models import Resource
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def users_favorites(request):
-    userf = User.objects.filter(userf=request.user.id)
+    userf = Favorites.objects.filter(userf=request.user.id)
     serializer = FavoritesSerializer(userf, many=True)
     return Response(serializer.data)
 
