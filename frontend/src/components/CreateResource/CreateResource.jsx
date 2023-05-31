@@ -80,11 +80,11 @@ const CreateResourcePage = (props) => {
             <h3>Create New Resource</h3>
         <div className='form-group'>
             <label>Title:</label>
-            <input type='text' className='form-control' value={title} onChange={(event) => setTitle(event.target.value)}/>    
+            <input type='text' className='form-title' value={title} onChange={(event) => setTitle(event.target.value)}/>    
         </div>
         <div className='form-group'>
             <label>Description:</label>
-            <input type='textarea' className='form-control' value={description} onChange={(event) => setDescription(event.target.value)}/>
+            <input type='textarea' className='form-description' value={description} onChange={(event) => setDescription(event.target.value)}/>
 
         </div>
         <div className='form-group'>

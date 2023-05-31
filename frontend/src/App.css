@@ -65,10 +65,6 @@ button:hover {
   gap: 2em;
 }
 
-.flex-container.a {
-  display: flex;
-  flex-direction: row;
-}
 
 .flex-ul {
   display: flex;

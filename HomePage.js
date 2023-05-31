@@ -33,7 +33,6 @@ const HomePage = () => {
             Authorization: "Bearer " + token,
           },
         });
-        console.log(response.data);
         setFavorites(response.data);
        
       } catch (error) {
@@ -55,15 +54,15 @@ const HomePage = () => {
     return el.subject === 'Science';});
     console.log(science)
 
-  // let readingf = favorites[0].favorites.map((el) => el.subject).filter(el => {
+  // let readingf = favorites.favorites.map((el) => el.subject).filter(el => {
   //     return el.subject === 'Reading';});
   //     console.log(readingf)
   
-  // let mathf = favorites[0].favorites.map((el) => el.subject).filter(el => {
+  // let mathf = favorites.favorites.map((el) => el.subject).filter(el => {
   //     return el.subject === 'Math';});
   //     console.log(mathf)
     
-  // let sciencef = favorites[0].favorites.map((el) => el.subject).filter(el => {
+  // let sciencef = favorites.favorites.map((el) => el.subject).filter(el => {
   //     return el.subject === 'Science';});
   //     console.log(sciencef)
 

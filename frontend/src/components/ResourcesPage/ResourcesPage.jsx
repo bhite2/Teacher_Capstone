@@ -3,6 +3,7 @@ import axios from "axios";
 import SearchBar from "../SearchBar/SearchBar";
 import { Link } from "react-router-dom";
 import './ResourcesPage.css'
+import FiveStarView from "../FiveStarView/FiveStarView";
 
 const ResourcesPage = (props) => {
 
@@ -40,18 +41,11 @@ const ResourcesPage = (props) => {
              {resources.map((resource) => {
           return (
             <div className="file_image">
-              {/* <div>
-                <Link to={`/video/${video.id.videoId}`}>
-                  <img src={video.snippet.thumbnails.medium.url} />
-                </Link>
-              </div> */}
-              {/* <div className="file">
-                {resource.file}
-              </div> */}
               <Link to={`/resource/${resource.id}`}>
                   <div className="title">{resource.title}</div>
               </Link>
               <div className="grade_level">{resource.grade_level.map((element) => element.level)}</div>
+              <FiveStarView/>
             </div>
           );
         })}
