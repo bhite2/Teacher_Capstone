@@ -5,6 +5,7 @@ import EditResource from "../EditResource/EditResource";
 import DeleteResource from "../DeleteResource/DeleteResource";
 import './ResourcePage.css'
 import FavoriteResource from "../FavoriteResource/FavoriteResource";
+import FiveStarRate from "../FiveStarRate/FiveStarRate";
 
 
 
@@ -52,6 +53,9 @@ const ResourcePage = (props) => {
             </div>
             <div>
               <FavoriteResource resourceDetails={resourceDetails}/>
+            </div>
+            <div>
+              <FiveStarRate/>
             </div>
 
             

@@ -8,7 +8,8 @@ import FiveStarView from "../FiveStarView/FiveStarView";
 const ResourcesPage = (props) => {
 
     const [resources, setResources] = useState([]);
-    const [searchInput, setSearchInput] = useState("");
+    const [filteredResources, setFilteredResources] =  useState([]);
+    
    
 
     async function allResources() {
@@ -17,25 +18,25 @@ const ResourcesPage = (props) => {
         setResources(response.data);
     }
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        allResources();
-      };
-    
       useEffect(() => {
         allResources();
       }, []);
+
+      const handleChange = (e) => {
+        const results = resources.filter(resource => {
+            if (e.target.value === "") return resources
+            return resource.title.toLowerCase().includes(e.target.value.toLowerCase()) || resource.subject.toLowerCase().includes(e.target.value.toLowerCase()) 
+            || resource.grade_level.toLowerCase().includes(e.target.value.toLowerCase())
+        })
+        console.log(results)}
+       
     
 
 
     return ( 
         <div>
-        <div className="searchbar">
-          <SearchBar
-            search={searchInput}
-            setSearch={setSearchInput}
-            handleSubmit={handleSubmit}
-          />
+        <div>
+          <SearchBar filteredResources={filteredResources} setFilteredResources={setFilteredResources} handleChange={handleChange}/>
         </div>
         <div className="grid-container" key={resources.id}>
              {resources.map((resource) => {
@@ -44,7 +45,8 @@ const ResourcesPage = (props) => {
               <Link to={`/resource/${resource.id}`}>
                   <div className="title">{resource.title}</div>
               </Link>
-              <div className="grade_level">{resource.grade_level.map((element) => element.level)}</div>
+              <div>{resource.subject}</div>
+              <div className="grade_level">{resource.grade_level.map((element) => element.level)}  </div>
               <FiveStarView/>
             </div>
           );
@@ -53,5 +55,4 @@ const ResourcesPage = (props) => {
       </div>
     );
 }
- 
 export default ResourcesPage;

@@ -7,8 +7,8 @@ from .serializers import RatingSerializer
 
 @api_view(['GET'])
 @permission_classes([AllowAny])
-def resource_rating(request):
-    ratings = Rating.objects.filter(user_id=request.resource.id)
+def resource_rating(request, resource_id):
+    ratings = Rating.objects.filter(resource_id=resource_id)
     serializer = RatingSerializer(ratings, many=True)
     return Response(serializer.data)
 
