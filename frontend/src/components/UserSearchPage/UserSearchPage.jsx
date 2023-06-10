@@ -9,7 +9,9 @@ import './UserSearchPage.css'
 const UserSearchPage = (props) => {
     const [user, token] = useAuth();
     const [users, setUsers] = useState([]);
-    const [filter, setFilter] = useState('')
+    const [userInput, setUserInput] = useState("");
+  
+    
   
     useEffect(() => {
       const allUsers = async () => {
@@ -19,6 +21,7 @@ const UserSearchPage = (props) => {
               Authorization: "Bearer " + token,
             },
           });
+          console.log(response.data)
           setUsers(response.data);
         } catch (error) {
           console.log(error.message);
@@ -26,10 +29,12 @@ const UserSearchPage = (props) => {
       };
       allUsers();
     }, [token]);
+
+
     return ( 
     <div>
         <div className="searchbar">
-            <UserSearchBar users={users} search = {filter} setSearch = {setFilter}/>
+            <UserSearchBar setUserInput={setUserInput}/>
         </div>  
             <table className="userinfo">
                 <thead>
@@ -41,7 +46,11 @@ const UserSearchPage = (props) => {
                     </tr>
                 </thead>
                 <tbody>
-                  {users.map((user) => {
+                  {users.filter((el) => el.username.includes(userInput) || 
+                  el.user_grade?.includes(userInput) || 
+                  el.user_district?.includes(userInput) ||
+                  el.user_state?.includes(userInput))
+                  .map((user) => {
                     return (
                       <tr>
                       <td>{user.username}</td>

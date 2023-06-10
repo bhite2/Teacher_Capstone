@@ -32,39 +32,43 @@ const ResourcePage = (props) => {
     
         <div>   
           {resourceDetails && 
-          <div className="flex-container">
-            <div className="title" key={resourceDetails.id}>
-              {resourceDetails.title}
-            </div>
-            <div>
-              {resourceDetails.description}
-            </div>
-            <div>
-              {resourceDetails.subject}
-            </div>
-            <div>
-              {resourceDetails.grade_level && resourceDetails.grade_level.map(grade => <p>{grade.level}</p>)}
-            </div>
-            <div>
-              <EditResource resourceID={resourceID}/>
-            </div>
-            <div>
-              <DeleteResource resourceID={resourceID}/>
-            </div>
-            <div>
-              <FavoriteResource resourceDetails={resourceDetails}/>
-            </div>
-            <div>
-              <FiveStarRate/>
+          <div>
+            <div className="resource-container">
+                <div className="title" key={resourceDetails.id}>
+                  {resourceDetails.title}
+                  
+                </div>
+                <div className="description">
+                  {resourceDetails.description}
+                </div>
+                <div>
+                  {resourceDetails.subject}
+                </div>
+                <div>
+                  {/* {resourceDetails.grade_level && resourceDetails.grade_level.map(grade => <p>{grade.level}</p>)} */}
+                  {resourceDetails.grade_level.map((el) => el.level + " ")}
+                </div>
             </div>
 
+            <div>
+                <div className="user-interaction">
+                  <div>
+                    <EditResource resourceDetails={resourceDetails} resourceID={resourceID}/>
+                  </div>
+                  <div>
+                    <DeleteResource resourceID={resourceID}/>
+                  </div>
+                  <div>
+                    <FavoriteResource resourceDetails={resourceDetails}/>
+                  </div>
+                  <div>
+                    <FiveStarRate/>
+                  </div>
+                </div>
+            </div>
             
-            
+
           </div>}  
-            
-                  
-                
-        
         </div>
      );
 }

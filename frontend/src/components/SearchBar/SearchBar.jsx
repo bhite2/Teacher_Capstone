@@ -5,7 +5,7 @@ const SearchBar = (props) => {
     return ( 
         <div>
             <form>
-                <input className="searchbar"  value = {props.filteredResources} type= 'text' placeholder="Search Resources..." onChange={props.handleChange} />
+                <input className="searchbar"  type= 'text' placeholder="Search Resources..." onChange={(e)=>props.setUserInput(e.target.value)} />
             </form>
         </div>
      );

@@ -28,7 +28,7 @@ const FriendsPage = (props) => {
               Authorization: "Bearer " + token,
             },
           });
-          // console.log(response.data)
+          console.log(response.data)
           setUsersFriends(response.data);
         } catch (error) {
           console.log(error.message);
@@ -51,11 +51,6 @@ const FriendsPage = (props) => {
       })
       console.log(posts)
     
-
-
-
-
-
     return ( 
     <div>
         {posts.map((post) => {
@@ -72,7 +67,7 @@ const FriendsPage = (props) => {
                         {post.subject}
                       </div>
                       <div>
-                        {post.grade_level.map((element) => element.level)}
+                        {post.grade_level.map((element) => element.level + " ")}
                       </div>
                     </div>
                    

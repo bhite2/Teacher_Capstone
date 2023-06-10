@@ -1,16 +1,25 @@
-/* .flex-container {
+.resource-container {
     display: flex;
-    align-content: flex-start;
-    justify-content: center;
     flex-direction: column;
-    column-gap: normal;
-    color:blueviolet;
+    align-items: center;
+    column-gap: 3rem;
 }
+
+.user-interaction {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    margin: .5em;
+} 
 
 .title {
-    font-size: larger;
+    font-size: 36px;
+    font-weight: 500;
+    margin-bottom: 1em;
 }
-
-.description{
-    font-size: medium;
-} */
+.decsription {
+    margin-left: 50%;
+    margin-right: 50%;
+}

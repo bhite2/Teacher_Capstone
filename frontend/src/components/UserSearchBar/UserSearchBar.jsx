@@ -4,7 +4,7 @@ const UserSearchBar = (props) => {
     return ( 
         <div>
             <form>
-                <input value = {props.search} type= 'text' placeholder="Search..." onChange={(event) => props.setSearch(event.target.value)}/>
+                <input className="searchbar"  type= 'text' placeholder="Search Users..." onChange={(e)=>props.setUserInput(e.target.value)}/>
             </form>
         </div>
      );
