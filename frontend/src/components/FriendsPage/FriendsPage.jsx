@@ -45,7 +45,6 @@ const FriendsPage = (props) => {
     })
     console.log(friend_id)
 
-  
     let posts = resources.filter (el => {
         return friend_id.includes(el.user.id)
       })

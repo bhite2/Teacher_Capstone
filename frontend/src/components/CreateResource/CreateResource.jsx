@@ -84,7 +84,7 @@ const CreateResourcePage = (props) => {
         </div>
         <div className='form-group'>
             <label>Description:</label>
-            <input type='textarea' className='form-description' value={description} onChange={(event) => setDescription(event.target.value)}/>
+            <input type='textarea' className='form-description' row="5" cols="40" value={description} onChange={(event) => setDescription(event.target.value)}/>
 
         </div>
         <div className='form-group'>

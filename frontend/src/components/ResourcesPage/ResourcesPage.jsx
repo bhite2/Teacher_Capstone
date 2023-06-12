@@ -30,7 +30,9 @@ const ResourcesPage = (props) => {
       </div>
       <div className="grid-container" key={resources.id}>
         {resources
-          .filter((el) => el.title.includes(userInput) || el.subject.includes(userInput) || el.grade_level.map((el) => el.level).includes(userInput))
+          .filter((el) => el.title.toLowerCase().includes(userInput) || 
+          el.subject.toLowerCase().includes(userInput) || 
+          el.grade_level.map((el) => el.level.toLowerCase()).includes(userInput))
           .map((resource) => {
             return (
               <div className="file_image">

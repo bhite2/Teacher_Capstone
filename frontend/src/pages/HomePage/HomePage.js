@@ -55,6 +55,25 @@ const HomePage = () => {
     return el.subject === 'Science';});
     console.log(science)
 
+  let subject = favorites.flatMap((favorite) => {
+    return (
+      favorite.favorites.map(el => el.subject)
+    )})
+    console.log(subject)
+
+
+  // let readingf = favorites.favorites.filter(el => {
+  //   return el.subject === "Reading"})
+  // console.log(readingf)
+
+  // let mathf = favorites.filter(el => {
+  //   return subject.includes(el.favorites.subject)})
+  // console.log(mathf)
+
+  // let sciencef = favorites.favorites.filter(el => {
+  //   return el.subject === "Science"})
+  // console.log(sciencef)
+
 
 
   return (

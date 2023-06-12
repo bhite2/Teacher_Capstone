@@ -45,8 +45,7 @@ const ResourcePage = (props) => {
                   {resourceDetails.subject}
                 </div>
                 <div>
-                  {/* {resourceDetails.grade_level && resourceDetails.grade_level.map(grade => <p>{grade.level}</p>)} */}
-                  {resourceDetails.grade_level.map((el) => el.level + " ")}
+                  {resourceDetails.grade_level && resourceDetails.grade_level.map(grade => grade.level + " ")}
                 </div>
             </div>
 

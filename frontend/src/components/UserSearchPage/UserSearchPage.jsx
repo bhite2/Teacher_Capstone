@@ -46,10 +46,10 @@ const UserSearchPage = (props) => {
                     </tr>
                 </thead>
                 <tbody>
-                  {users.filter((el) => el.username.includes(userInput) || 
-                  el.user_grade?.includes(userInput) || 
-                  el.user_district?.includes(userInput) ||
-                  el.user_state?.includes(userInput))
+                  {users.filter((el) => el.username.toLowerCase().includes(userInput) || 
+                  el.user_grade?.toLowerCase().includes(userInput) || 
+                  el.user_district?.toLowerCase().includes(userInput) ||
+                  el.user_state?.toLowerCase().includes(userInput))
                   .map((user) => {
                     return (
                       <tr>

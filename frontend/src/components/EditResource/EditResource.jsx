@@ -1,6 +1,6 @@
 import axios from "axios";
-import { useState } from "react";
 import useAuth from "../../hooks/useAuth";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import Select from "react-select";
 
@@ -28,16 +28,15 @@ const grade_options = [
 
 
 const EditResource = (props) => {
-  // grade_level: [{id: 1, level: "K"}, {id: 2, level: "1st"}]
-  // defaultValues={[{value: "K", label: "K"}, {value: "1st", label: "1st"}]}
-console.log(props)
     const [user, token] = useAuth();
     const {resourceID} = useParams();
-    const[title, setTitle] = useState('')
-    const[description, setDescription] = useState('')
-    const[subject, setSubject] = useState(null)
-    const[grade_level, setGradeLevel] = useState(null)
-    const[file, setFile] = useState(null)
+    const [editTitle, setEditTitle] = useState("");
+    const [editDescription, setEditDescription] = useState("");
+    const [editSubject, setEditSubject] = useState(null);
+    const [editGrade, setEditGrade] = useState(null);
+    const [editFile, setEditFile] = useState(null);
+    
+
 
     async function EditResource() {
 
@@ -66,12 +65,10 @@ console.log(props)
 
     }
     
-    let defaultValues = props.resourceDetails.grade_level.map(el => {
+    let defaultValues = props.resourceDetails.grade_level?.map(el => {
       return (
         {value: el.level, label: el.level}
-      )
-    } )
-    console.log(defaultValues)
+      )})
 
     return ( 
       <div>
@@ -93,25 +90,24 @@ console.log(props)
             <form method="post"  className='form-grid'>
                 <div className='form-group'>
                     <label>Title:</label>
-                    <input type='text' className='form-title' value={props.resourceDetails.title} onChange={(event) => setTitle(event.target.value)}/>    
+                    <input type='text' className='form-title' defaultValue={props.resourceDetails.title} onChange={(e) => setEditTitle(e.target.value)}/>    
                 </div>
                 <div className='form-group'>
                     <label>Description:</label>
-                    <input type='textarea' className='form-description' value={props.resourceDetails.description} onChange={d} />
+                    <input type='textarea' className='form-description' defaultValue={props.resourceDetails.description} onChange={(event) => setEditDescription(event.target.value)} />
 
                 </div>
                 <div className='form-group'>
                     <label>Subject:</label>
-                    <Select className='form-description'  options={subject_options} value={{ value: props.resourceDetails.subject, label: props.resourceDetails.subject }} onChange={d}/>
+                    <Select className='form-description'  options={subject_options} value={{ value: props.resourceDetails.subject, label: props.resourceDetails.subject }} onChange={setEditSubject}/>
                 </div>
                 <div className='form-group'>
                     <label>Grade Level:</label>
-                    <Select className='form-control' isMulti options={grade_options} value={defaultValues} onChange={d} />
+                    <Select className='form-control' isMulti options={grade_options} value={defaultValues} onChange={setEditGrade} />
                 </div>
                 <div className='form-group'>
                     <label>File:</label>
                     <input type='file' className='form-control'/>
-
                 </div>
             </form>
             </div>

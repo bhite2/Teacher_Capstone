@@ -25,7 +25,7 @@ const AddFriend = (props) => {
     
     return ( 
         <div>
-            <button type='submit' className='btn btn-primary' style={{'margin-top': '1em'}} onClick={AddFriend}>Add Friend</button>
+            <button type='submit' className='btn btn-primary' style={{'marginTop': '1em'}} onClick={AddFriend}>Add Friend</button>
         </div>
      );
 }

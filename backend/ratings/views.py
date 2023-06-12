@@ -14,7 +14,7 @@ def resource_rating(request, resource_id):
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
-def rate_resource(request):
+def rate_resource(request, resource_id):
     if request.method == 'POST':
         serializer = RatingSerializer(data=request.data)
         if serializer.is_valid():
