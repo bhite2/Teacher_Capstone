@@ -63,7 +63,7 @@ const FriendsPage = (props) => {
                     </div>
                     <div className="subject-grade">
                       <div>
-                        {post.subject}
+                        {post.subject}{"  "}
                       </div>
                       <div>
                         {post.grade_level.map((element) => element.level + " ")}

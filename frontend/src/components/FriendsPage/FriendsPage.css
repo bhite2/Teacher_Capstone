@@ -9,5 +9,6 @@
 .subject-grade {
     display: flex;
     flex-direction: row;
+    column-gap: .5em;
     margin: 1em;
 }

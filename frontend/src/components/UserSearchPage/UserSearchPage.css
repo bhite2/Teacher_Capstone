@@ -3,3 +3,14 @@
     align-content: center;
     justify-content: center;
 }
+
+.userinfo {
+    margin-left: 30%;
+    margin-right: 30%;
+
+}
+
+th, td {
+
+    margin-right: 1em;
+}
