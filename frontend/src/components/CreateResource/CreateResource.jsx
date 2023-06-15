@@ -3,6 +3,7 @@ import axios from "axios";
 import Select from "react-select";
 import useAuth from "../../hooks/useAuth";
 import "./CreateResource.css"
+import { useNavigate } from "react-router-dom";
 
 
 const subject_options = [
@@ -38,6 +39,8 @@ const CreateResourcePage = (props) => {
 
     
     async function CreateResource(newResource) {
+
+
         try {
             let response = await axios.post('http://127.0.0.1:8000/api/resources/post/', newResource, 
             {
@@ -52,6 +55,7 @@ const CreateResourcePage = (props) => {
         } catch (error) {
             console.log(error.response.data);
           }
+          
 
     }
 

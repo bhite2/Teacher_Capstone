@@ -93,7 +93,9 @@ const HomePage = () => {
               <ul className="flex-ul">
                 {reading.map((reading) => {
                   return (
+                    <Link to={`/resource/${reading.id}`}>
                         <li key={reading.id}>{reading.title}</li>
+                    </Link>
                   )
                 })}
               </ul>
@@ -103,7 +105,9 @@ const HomePage = () => {
               <ul className="flex-ul">
                 {math.map((math) => {
                   return (
+                    <Link to={`/resource/${math.id}`}>
                     <li key={math.id}>{math.title}</li>
+                    </Link>
                   )
                 })}
               </ul>
@@ -113,7 +117,9 @@ const HomePage = () => {
               <ul className="flex-ul">
                 {science.map((science) => {
                   return (
+                    <Link to={`/resource/${math.id}`}>
                     <li key={science.id}>{science.title}</li>
+                    </Link>
                   )
                 })}
               </ul>
@@ -125,7 +131,10 @@ const HomePage = () => {
         <ul>
           {subject.map(el =>{
           if (el.subject === "Reading") {
-            return (<li>{el.title}</li>)
+            return (
+              <Link to={`/resource/${el.id}`}>
+            <li>{el.title}</li>
+            </Link>)
           }
           else{
             return null
@@ -136,7 +145,10 @@ const HomePage = () => {
         <ul>
           {subject.map(el =>{
           if (el.subject === "Math") {
-            return (<li>{el.title}</li>)
+            return (
+              <Link to={`/resource/${el.id}`}>
+            <li>{el.title}</li>
+            </Link>)
           }
           else {
             return null
@@ -147,7 +159,10 @@ const HomePage = () => {
         <ul>
           {subject.map(el =>{
           if (el.subject === "Science") {
-            return (<li>{el.title}</li>)
+            return (
+              <Link to={`/resource/${el.id}`}>
+            <li>{el.title}</li>
+            </Link>)
           }
           else {
             return null

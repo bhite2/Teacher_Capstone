@@ -16,7 +16,7 @@ const FiveStarView = (props) => {
   
     useEffect(() => {
       getRating();
-    }, [values]);
+    }, []);
 
     async function getAverage() {
       let resource_ratings = values.map(el => {
@@ -44,7 +44,7 @@ const FiveStarView = (props) => {
 
     useEffect(() => {
       getAverage();
-    }, [resourceAvg]);
+    }, []);
 
 
   
