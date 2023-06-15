@@ -93,7 +93,7 @@ const HomePage = () => {
               <ul className="flex-ul">
                 {reading.map((reading) => {
                   return (
-                    <li key={reading.id}>{reading.title}</li>
+                        <li key={reading.id}>{reading.title}</li>
                   )
                 })}
               </ul>

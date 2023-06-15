@@ -77,14 +77,14 @@ const CreateResourcePage = (props) => {
     return ( 
         
         <form method="post" onSubmit={handleSubmit} className='form-grid'>
-            <h3>Create New Resource</h3>
+            <h3 style={{'margin-top': '1em', 'margin-left': '30%'}}>Create New Resource</h3>
         <div className='form-group'>
             <label>Title:</label>
             <input type='text' className='form-title' value={title} onChange={(event) => setTitle(event.target.value)}/>    
         </div>
         <div className='form-group'>
             <label>Description:</label>
-            <textarea  className='form-description'   value={description} onChange={(event) => setDescription(event.target.value)}/>
+            <textarea  className='form-description'   rows= '3' cols='100' value={description} onChange={(event) => setDescription(event.target.value)}/>
 
         </div>
         <div className='form-group'>
@@ -100,7 +100,7 @@ const CreateResourcePage = (props) => {
             <input type='file' className='form-control' onChange={(event) => setFile(event.target.files[0])}/>
 
         </div>
-        <button type='submit' className='btn btn-primary' style={{'margin-top': '1em'}}>Create</button>
+        <button type='submit' className='btn btn-primary'  style={{'margin-top': '1em', 'margin-left': '30%'}}>Create</button>
     </form>
      );
 }
