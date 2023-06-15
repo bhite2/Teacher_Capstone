@@ -1,11 +1,5 @@
 .searchbar {
-    margin: 0.5em;
+    margin-bottom: 1.5em;
+    margin-left: 25%;
     width: 500px;
-    display: grid;
-    align-items: center;
-}
-.form-container{
-    width: 50%;
-    margin: auto;
-    display: flex;
 }

@@ -6,9 +6,9 @@ import "./CreateResource.css"
 
 
 const subject_options = [
-    {value: 'reading', label: 'Reading'},
-    {value: 'math', label: 'Math'},
-    {value: 'science', label: 'Science'},
+    {value: 'Reading', label: 'Reading'},
+    {value: 'Math', label: 'Math'},
+    {value: 'Science', label: 'Science'},
 ]
 const grade_options = [
     { value: 0, label: 'K' },
@@ -84,7 +84,7 @@ const CreateResourcePage = (props) => {
         </div>
         <div className='form-group'>
             <label>Description:</label>
-            <input type='textarea' className='form-description' row="5" cols="40" value={description} onChange={(event) => setDescription(event.target.value)}/>
+            <textarea  className='form-description'   value={description} onChange={(event) => setDescription(event.target.value)}/>
 
         </div>
         <div className='form-group'>

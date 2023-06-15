@@ -57,7 +57,7 @@ const HomePage = () => {
 
   let subject = favorites.flatMap((favorite) => {
     return (
-      favorite.favorites.map(el => el.subject)
+      favorite.favorites
     )})
     console.log(subject)
 
@@ -121,7 +121,38 @@ const HomePage = () => {
       </div>
       <div>
         <h2>Favorites</h2>
+        <h3>Reading</h3>
         <ul>
+          {subject.map(el =>{
+          if (el.subject === "Reading") {
+            return (<li>{el.title}</li>)
+          }
+          else{
+            return null
+          }
+          })}
+        </ul>
+        <h3>Math</h3>
+        <ul>
+          {subject.map(el =>{
+          if (el.subject === "Math") {
+            return (<li>{el.title}</li>)
+          }
+          else {
+            return null
+          }
+          })}
+        </ul>
+        <h3>Science</h3>
+        <ul>
+          {subject.map(el =>{
+          if (el.subject === "Science") {
+            return (<li>{el.title}</li>)
+          }
+          else {
+            return null
+          }
+          })}
         </ul>
       </div>
       </div>

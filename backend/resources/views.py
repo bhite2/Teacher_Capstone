@@ -54,7 +54,7 @@ def user_resources(request):
 def edit_resources(request, pk):
     resource = get_object_or_404(Resource, pk=pk)   
     if request.method == 'PUT':
-        serializer = ResourceSerializer(resource, data=request.data)
+        serializer = ResourceSerializer(resource, data=request.data, partial=True)
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data)

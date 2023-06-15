@@ -43,7 +43,7 @@ const ResourcesPage = (props) => {
                 <div className="grade_level">
                   {resource.grade_level.map((element) => element.level + " ")}{" "}
                 </div>
-                <FiveStarView />
+                <FiveStarView resource={resource}/>
               </div>
             );
           })}

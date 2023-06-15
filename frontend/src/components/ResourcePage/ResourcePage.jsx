@@ -6,12 +6,13 @@ import DeleteResource from "../DeleteResource/DeleteResource";
 import './ResourcePage.css'
 import FavoriteResource from "../FavoriteResource/FavoriteResource";
 import FiveStarRate from "../FiveStarRate/FiveStarRate";
+import Comment from "../Comments/Comments";
 
 
 
 const ResourcePage = (props) => {
   
-  const [resourceDetails,setResourceDetails] = useState({});
+  const [resourceDetails,setResourceDetails] = useState();
   const {resourceID} = useParams();
  
 
@@ -47,6 +48,9 @@ const ResourcePage = (props) => {
                 <div>
                   {resourceDetails.grade_level && resourceDetails.grade_level.map(grade => grade.level + " ")}
                 </div>
+                <div>
+                    <FiveStarRate/>
+                </div>
             </div>
 
             <div>
@@ -60,10 +64,11 @@ const ResourcePage = (props) => {
                   <div>
                     <FavoriteResource resourceDetails={resourceDetails}/>
                   </div>
-                  <div>
-                    <FiveStarRate/>
-                  </div>
+                  
                 </div>
+            </div>
+            <div>
+              <Comment resourceId={resourceID} />
             </div>
             
 

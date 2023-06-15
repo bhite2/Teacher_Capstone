@@ -34,7 +34,7 @@ const DeleteResource = () => {
   
 
   return ( 
-      <button type="submit" onClick={DeleteResource}>Delete</button>
+      <button class='btn btn-primary' type="submit" onClick={DeleteResource}>Delete</button>
   );
 }
  
