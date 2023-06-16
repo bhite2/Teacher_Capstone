@@ -36,7 +36,7 @@ const UserSearchPage = (props) => {
         <div className="searchbar">
             <UserSearchBar setUserInput={setUserInput}/>
         </div>  
-            <table className="userinfo">
+            <table className="userinfo" >
                 <thead>
                     <tr>
                         <th>User</th>

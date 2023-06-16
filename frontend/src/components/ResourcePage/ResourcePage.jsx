@@ -27,11 +27,28 @@ const ResourcePage = (props) => {
 
   useEffect(() => {
     fetchResourceDetails();
-  }, []);
+  }, [resourceDetails]);
 
     return ( 
     
-        <div>   
+        <div> 
+
+          
+            <div>
+                <div className="user-interaction">
+                  <div>
+                    <EditResource resourceDetails={resourceDetails} resourceID={resourceID}/>
+                  </div>
+                  <div>
+                    <DeleteResource resourceID={resourceID}/>
+                  </div>
+                  <div>
+                    <FavoriteResource resourceDetails={resourceDetails}/>
+                  </div>
+                  
+                </div>
+            </div>
+
           {resourceDetails && 
           <div>
             <div className="resource-container">
@@ -49,24 +66,10 @@ const ResourcePage = (props) => {
                   {resourceDetails.grade_level && resourceDetails.grade_level.map(grade => grade.level + " ")}
                 </div>
                 <div>
-                    <FiveStarRate/>
+                    <FiveStarRate resourceDetails={resourceDetails} resourceID={resourceID}/>
                 </div>
             </div>
 
-            <div>
-                <div className="user-interaction">
-                  <div>
-                    <EditResource resourceDetails={resourceDetails} resourceID={resourceID}/>
-                  </div>
-                  <div>
-                    <DeleteResource resourceID={resourceID}/>
-                  </div>
-                  <div>
-                    <FavoriteResource resourceDetails={resourceDetails}/>
-                  </div>
-                  
-                </div>
-            </div>
             <div>
               <Comment resourceId={resourceID} />
             </div>

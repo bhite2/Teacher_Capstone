@@ -1,0 +1,818 @@
+{
+	"info": {
+		"_postman_id": "695288c6-1c8f-4e3f-925c-644aab8da44a",
+		"name": "Teacher_Feed_API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24889813"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Register_User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"jumpman23\",\r\n    \"password\": \"Airness23!\",\r\n    \"email\": \"mjordan@jumpman23.com\",\r\n    \"first_name\": \"Michael\",\r\n    \"last_name\": \"Jordan\",\r\n    \"user_grade\": \"4th\",\r\n    \"user_district\": \"New Hanover County\",\r\n    \"user_state\": \"North Carolina\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/auth/register/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"auth",
+								"register",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login_User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"bhite2\",\r\n    \"password\": \"#Ma23As17\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/auth/login/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"auth",
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh_Access",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"refresh\": \"PASTE REFRESH TOKEN FROM LOGIN HERE\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/auth/login/refresh/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"auth",
+								"login",
+								"refresh",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cars",
+			"item": [
+				{
+					"name": "GET all cars (unprotected)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/cars/all/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"cars",
+								"all",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET cars for user (protected)",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ4MTU2ODM5LCJpYXQiOjE2NDcyOTI4MzksImp0aSI6ImJjYzJhZTUzOTRlYzQ3OThiNjI0YTcwYTYzYjcxOThmIiwidXNlcl9pZCI6MSwidXNlcm5hbWUiOiJqanZlZ2EiLCJmaXJzdF9uYW1lIjoiIn0.l9ATW5CpWF2TGniqVgU1I-a8LkuqgLQ4ok3tJh6asAA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/cars/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"cars",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST new car for user (protected)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ4MTU3MjczLCJpYXQiOjE2NDcyOTMyNzMsImp0aSI6IjIyMDQ4YTg2NzEzMTQyMmZhZjJmNDNmYmI2MTExZDg2IiwidXNlcl9pZCI6MiwidXNlcm5hbWUiOiJkYW50aGVtYW4iLCJmaXJzdF9uYW1lIjoiRGFuaWVsIn0.DeTe47E7-9eCr7xKE22m3CvFMDj0Sxye5A6ndwJ024M",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"make\": \"Ford\",\n    \"model\": \"F150\",\n    \"year\": 1999\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/cars/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"cars",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reseources",
+			"item": [
+				{
+					"name": "Get_All_Resources",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/resources/all",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"resources",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create_New_Resource",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgzODM1NTU2LCJpYXQiOjE2ODI5NzE1NTYsImp0aSI6IjRhMDkxYWNhMjRiMjRmODlhMmE4MjFkNTE3MWE3NDY3IiwidXNlcl9pZCI6MSwidXNlcm5hbWUiOiJiaGl0ZTIiLCJmaXJzdF9uYW1lIjoiQnJ5YW4ifQ.CLszG6RgbDLdSDFh6dv7YmUIbh-y6zZxKR_r6YUwH14",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgyMTMwNzc0LCJpYXQiOjE2ODEyNjY3NzQsImp0aSI6ImU1MDE2NzBlZGZmNDQwYjRhZGUzYmE1ZWJhMjM4YWQ0IiwidXNlcl9pZCI6MSwidXNlcm5hbWUiOiJiaGl0ZTIiLCJmaXJzdF9uYW1lIjoiIn0.9XA_B93pcVQEORRERHIHyPVj7RHF6YU7tLtx6JJwIT0",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/Bryan/Downloads/Bryan Hite Capstone User Stories.docx"
+								},
+								{
+									"key": "title",
+									"value": "capstone user stories",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "user stories",
+									"type": "text"
+								},
+								{
+									"key": "subject",
+									"value": "capstone",
+									"type": "text"
+								},
+								{
+									"key": "grade_level",
+									"value": "4",
+									"type": "text"
+								},
+								{
+									"key": "grade_level",
+									"value": "5",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/resources/post/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"resources",
+								"post",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get_Resource_By_User",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgyNzkwNzUwLCJpYXQiOjE2ODE5MjY3NTAsImp0aSI6ImZkZjU1MDYzYTc1NjQ3MWRiMzMwMTFjYjFiODg5Y2U3IiwidXNlcl9pZCI6MSwidXNlcm5hbWUiOiJiaGl0ZTIiLCJmaXJzdF9uYW1lIjoiQnJ5YW4ifQ.gTGN6sX42GZpR6KTnj77gBCsHepPiVZQabMUROzYG_Y",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"warning": "This is a duplicate header and will be overridden by the Authorization header generated by Postman.",
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgyNzg3OTc1LCJpYXQiOjE2ODE5MjM5NzUsImp0aSI6IjMzZmQ3ZmE1YTdhYzRiNWU4NDM0Njk3OGVkNmQ1MjM5IiwidXNlcl9pZCI6MSwidXNlcm5hbWUiOiJiaGl0ZTIiLCJmaXJzdF9uYW1lIjoiQnJ5YW4ifQ.ptJ1oQ4J7a5MZjU_Ko7PrdXYOC6RIqhiRje451SSwTA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/resources/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"resources",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modify_Resource",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgyNzg3OTc1LCJpYXQiOjE2ODE5MjM5NzUsImp0aSI6IjMzZmQ3ZmE1YTdhYzRiNWU4NDM0Njk3OGVkNmQ1MjM5IiwidXNlcl9pZCI6MSwidXNlcm5hbWUiOiJiaGl0ZTIiLCJmaXJzdF9uYW1lIjoiQnJ5YW4ifQ.ptJ1oQ4J7a5MZjU_Ko7PrdXYOC6RIqhiRje451SSwTA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "capstone user stories",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "user stories",
+									"type": "text"
+								},
+								{
+									"key": "subject",
+									"value": "capstone",
+									"type": "text"
+								},
+								{
+									"key": "grade_level",
+									"value": "5, 6",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/Bryan/Downloads/Bryan Hite Capstone User Stories.docx"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/resources/edit/2/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"resources",
+								"edit",
+								"2",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete_Resource",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjg0MDgxNDYyLCJpYXQiOjE2ODMyMTc0NjIsImp0aSI6IjBjNTE2NzhkNWVkMTQ2ZmQ5MDdlNDdkY2NkODEwMDA3IiwidXNlcl9pZCI6MSwidXNlcm5hbWUiOiJiaGl0ZTIiLCJmaXJzdF9uYW1lIjoiQnJ5YW4ifQ.7HqLenr_9GM7-RiZvApQWLsVBo8H9sLfXW-mF-0ZEZs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"warning": "This is a duplicate header and will be overridden by the Authorization header generated by Postman.",
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgyMTMwNzc0LCJpYXQiOjE2ODEyNjY3NzQsImp0aSI6ImU1MDE2NzBlZGZmNDQwYjRhZGUzYmE1ZWJhMjM4YWQ0IiwidXNlcl9pZCI6MSwidXNlcm5hbWUiOiJiaGl0ZTIiLCJmaXJzdF9uYW1lIjoiIn0.9XA_B93pcVQEORRERHIHyPVj7RHF6YU7tLtx6JJwIT0",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/resources/edit/24/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"resources",
+								"edit",
+								"24",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get_Resource_By_ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/resources/2/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"resources",
+								"2",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comments",
+			"item": [
+				{
+					"name": "Comments_By_Resource",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/comments/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"comments",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post_Comment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjg3NDUwOTQyLCJpYXQiOjE2ODY1ODY5NDIsImp0aSI6IjE3NGE0NjAyYzgxNjQzYjc4NGI5OWIyMmIwMDM1Yzg1IiwidXNlcl9pZCI6MSwidXNlcm5hbWUiOiJiaGl0ZTIiLCJmaXJzdF9uYW1lIjoiIn0.M_3hQqBvuRYH8U5gOkLjoTn5YMWlkDS3j0qnUX_p__0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"resource_id\": \"1\",\r\n    \"text\": \"Great math worksheet for 1st grade\"\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/comments/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"comments",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Friends_List",
+			"item": [
+				{
+					"name": "Get_All_Friends",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgyODk4OTg2LCJpYXQiOjE2ODIwMzQ5ODYsImp0aSI6IjIwNzczZmE2NzdmMzRlYzdiMzU1ZDg0MTVkMWI2MjcwIiwidXNlcl9pZCI6MSwidXNlcm5hbWUiOiJiaGl0ZTIiLCJmaXJzdF9uYW1lIjoiQnJ5YW4ifQ.PgZj2RAxlyi0fLnT50Z3bsxtDNxGB_jZDi_AWoYrupc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/friendslist/all/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"friendslist",
+								"all",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add_New_Friend",
+					"request": {
+						"method": "PATCH",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Get_User_Friends",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Ratings",
+			"item": [
+				{
+					"name": "Get_Rating",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/ratings/3/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"ratings",
+								"3",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post_Rating",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjg3NjI3MjA1LCJpYXQiOjE2ODY3NjMyMDUsImp0aSI6ImFhMTJjNDYyOGUyOTRhZjViYzRhNDBjMzQ4MDJkMjM3IiwidXNlcl9pZCI6MSwidXNlcm5hbWUiOiJiaGl0ZTIiLCJmaXJzdF9uYW1lIjoiIn0.dbAvQGzvLfsigJIwg8Q6w0kXSzPdZKeB-t9EWtLmZWg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"resource_id\": 1,\r\n    \"rating\": 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/ratings/rate/1/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"ratings",
+								"rate",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Favorites",
+			"item": [
+				{
+					"name": "Get_Favorites",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjg3NDUwOTQyLCJpYXQiOjE2ODY1ODY5NDIsImp0aSI6IjE3NGE0NjAyYzgxNjQzYjc4NGI5OWIyMmIwMDM1Yzg1IiwidXNlcl9pZCI6MSwidXNlcm5hbWUiOiJiaGl0ZTIiLCJmaXJzdF9uYW1lIjoiIn0.M_3hQqBvuRYH8U5gOkLjoTn5YMWlkDS3j0qnUX_p__0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/favorites/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"favorites",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add_to_Favorites",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjg1MTk5NjEwLCJpYXQiOjE2ODQzMzU2MTAsImp0aSI6ImM4NGE1ZWViNDVmMTQ4YzRiODBmODFhMWRiYjVjNzRiIiwidXNlcl9pZCI6MSwidXNlcm5hbWUiOiJiaGl0ZTIiLCJmaXJzdF9uYW1lIjoiQnJ5YW4ifQ.o3MUKjXdn5cCfNGKwGecihF6yfp0vf2T2oSorAIztqM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/favorites/user/1/favorite/10/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"favorites",
+								"user",
+								"1",
+								"favorite",
+								"10",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Share_Resources",
+			"item": [
+				{
+					"name": "Get_Shared_Resource",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Share_Resource",
+					"request": {
+						"method": "PATCH",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
