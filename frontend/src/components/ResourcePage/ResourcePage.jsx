@@ -32,8 +32,9 @@ const ResourcePage = (props) => {
     return ( 
     
         <div> 
-
+          {resourceDetails && 
           
+          <div>
             <div>
                 <div className="user-interaction">
                   <div>
@@ -49,8 +50,6 @@ const ResourcePage = (props) => {
                 </div>
             </div>
 
-          {resourceDetails && 
-          <div>
             <div className="resource-container">
                 <div className="title" key={resourceDetails.id}>
                   {resourceDetails.title}
@@ -69,7 +68,7 @@ const ResourcePage = (props) => {
                     <FiveStarRate resourceDetails={resourceDetails} resourceID={resourceID}/>
                 </div>
             </div>
-
+            
             <div>
               <Comment resourceId={resourceID} />
             </div>

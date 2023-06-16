@@ -117,7 +117,7 @@ const HomePage = () => {
               <ul className="flex-ul">
                 {science.map((science) => {
                   return (
-                    <Link to={`/resource/${math.id}`}>
+                    <Link to={`/resource/${science.id}`}>
                     <li key={science.id}>{science.title}</li>
                     </Link>
                   )

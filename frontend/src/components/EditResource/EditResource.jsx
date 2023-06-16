@@ -28,8 +28,8 @@ const grade_options = [
 const EditResource = (props) => {
   const [user, token] = useAuth();
   const { resourceID } = useParams();
-  const [editTitle, setEditTitle] = useState(props.resourceDetails.title);
-  const [editDescription, setEditDescription] = useState(props.resourceDetails.description);
+  const [editTitle, setEditTitle] = useState(props.resourceDetails?.title);
+  const [editDescription, setEditDescription] = useState(props.resourceDetails?.description);
   const [editSubject, setEditSubject] = useState();
   const [editGrade, setEditGrade] = useState();
   const [editFile, setEditFile] = useState(null);
@@ -45,7 +45,7 @@ const EditResource = (props) => {
       value: props.resourceDetails.subject, label: props.resourceDetails.subject
     })
 
-  }, [props.resourceDetails.subject]);
+  }, [props.resourceDetails?.subject]);
 
   // useEffect(() => {
   //   let defaultSubjectValues = props.resourceDetails.subject?.map((el) => {
